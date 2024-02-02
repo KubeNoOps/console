@@ -11,12 +11,11 @@ on:
 env:
   # TODO: Change variable to your image's name.
   IMAGE_NAME: ks-console
-  IMAGE_REPO: kubespheredev
+  IMAGE_REPO: ghcr.io/kubenoops
 
 jobs:
   release-linux-amd64:
     runs-on: ubuntu-latest
-    if: github.repository	== 'kubesphere/console'
     steps:
       - uses: actions/checkout@v2
 
@@ -29,7 +28,7 @@ jobs:
         uses: docker/setup-buildx-action@v1
 
       - name: Log into registry
-        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
       - name: Push image
         run: |
