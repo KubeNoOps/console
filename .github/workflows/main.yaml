@@ -33,4 +33,4 @@ jobs:
       - name: Push image
         run: |
           TAG=${GITHUB_REF#refs/*/} REPO=$IMAGE_REPO make container-cross-push
-          echo "Push $IMAGE success!"
+          echo "Push $IMAGE success! "
